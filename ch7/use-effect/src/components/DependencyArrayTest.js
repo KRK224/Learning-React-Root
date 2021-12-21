@@ -13,10 +13,11 @@ const DependencyArrayTest = () =>{
 
   useEffect(()=>{
     console.log(`typing ${val}`);
-  });
+  }, [val]); // 의존 관계 배열 추가
+
   useEffect(()=>{
     console.log(`saved phrase ${phrase}`);
-  });
+  }, [phrase]); // 의존 관계 배열 추가
 
   return(
     <>
