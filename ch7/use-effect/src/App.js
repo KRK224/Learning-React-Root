@@ -1,9 +1,11 @@
 import React from 'react';
-import Checkbox from './components/Checkbox';
+// import Checkbox from './components/Checkbox';
+import DependencyArrayTest from './components/DependencyArrayTest'
 
 const App = () =>{
   return(
-    <Checkbox />
+    // <Checkbox />
+    <DependencyArrayTest/>
   )
 }
 
