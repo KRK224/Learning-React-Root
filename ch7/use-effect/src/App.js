@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
 // import Checkbox from './components/Checkbox';
 // import DependencyArrayTest from './components/DependencyArrayTest'
 import WordCount from './components/WordCount';
@@ -17,6 +17,17 @@ const App = () =>{
   // useEffect(()=>{
   //   console.log('words fresh render');
   // }, [words]); // 배열은 참조값, 매 렌더링마다 새로 생성한다.
+
+  // useCallback example
+  const fn = useCallback(() => {
+    console.log("hello");
+    console.log('world');
+  }, []);
+  
+  useEffect(()=>{
+    console.log('fresh render');
+    fn();
+  }, [fn]);
 
   return(
     // <Checkbox />
