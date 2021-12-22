@@ -1,9 +1,13 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import useAnyKeyToRender from '../hooks/useAnyKeyToRender';
 
 const WordCount = ({children=""}) =>{
   
-  const words = children.split(" ");
+  const words = useMemo(()=>{
+    const words = children.split(" ");
+    return words
+  }, []);
+  
 
   useAnyKeyToRender();
 
