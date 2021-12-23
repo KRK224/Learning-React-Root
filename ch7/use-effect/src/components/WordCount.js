@@ -6,13 +6,13 @@ const WordCount = ({children=""}) =>{
   const words = useMemo(()=>{
     const words = children.split(" ");
     return words
-  }, [children]);
+  }, []);
   
 
   useAnyKeyToRender();
 
   useEffect(()=>{
-    console.log("fresh render");
+    console.log("words fresh render");
   }, [words]);
 
   return(

@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 // import Checkbox from './components/Checkbox';
 // import DependencyArrayTest from './components/DependencyArrayTest'
 import WordCount from './components/WordCount';
@@ -6,6 +6,7 @@ import WordCount from './components/WordCount';
 
 const App = () =>{
   
+  const [words, setWords] = useState('You are not going to believe this but...');
   // const word = "gnar"; // 원시 값으로서의 word
   // const words = ['sick', 'powder', 'day']
   // useAnyKeyToRender();
@@ -33,9 +34,12 @@ const App = () =>{
     // <Checkbox />
     // <DependencyArrayTest/>
     // <h1>Open the console</h1>
+    <>
     <WordCount>
-      You are not going to believe this but...
+      {words}
     </WordCount>
+    <button onClick={()=> setWords(prompt('typing words'))}>changing words</button>
+    </>
   )
 }
 
