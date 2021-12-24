@@ -1,4 +1,4 @@
-import React, {useState, memo, useEffect} from 'react';
+import React, {useState, memo} from 'react';
 
 const Cat = ({name}) =>{
   console.log(`rendering ${name}`);
