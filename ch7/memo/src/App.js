@@ -1,9 +1,5 @@
 import React, {useState, memo} from 'react';
-
-const Cat = ({name}) =>{
-  console.log(`rendering ${name}`);
-  return <p>{name}</p>
-}
+import Cat from './Cat';
 
 const PureCat = memo(Cat);
 
@@ -14,7 +10,7 @@ const App = () =>{
   return(
     <>
       {cats.map((name, i) => {
-        return <PureCat key={i} name={name} /> // memo를 사용하여 프롭스 값이 변경 시에만 재렌더링 됨.
+        return <PureCat key={i} name={name} onClick={name=> console.log(`${name} has meowed`)}/> // 함수 인스턴스는 매번 생성되어 memo 동작 안함.
       })}
       <button onClick={()=>setCats([...cats, prompt("Name a cat")])}> Add a Cat</button>
     </>
