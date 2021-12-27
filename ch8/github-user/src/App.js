@@ -1,14 +1,31 @@
 import React, { useState, useEffect} from 'react';
 
+const loadJSON = key =>
+  key && JSON.parse(localStorage.getItem(key));
+
+const saveJSON = (key, data) =>
+  localStorage.setItem(key, JSON.stringify(data));
 
 function GitHubUser({ login }){
-  const [data, setData] = useState();
+  const [data, setData] = useState(loadJSON(`user:${login}`));
   // const token = process.env.REACT_APP_GITHUB_TOKEN;
   
+  useEffect(()=>{
+    if (!data) return;
+    if (data.login === login) return;
+    const {name, avatar_url, location} = data;
+    saveJSON(`user:${login}`, {
+      name,
+      login,
+      avatar_url,
+      location
+    })
+  }, [data]);
 
   useEffect(()=>{
     if(!login) return;
-    console.log(login);
+    if(data && data.login === login) return;
+    console.log('data is not it local storage');
       fetch(`https://api.github.com/users/${login}`, {
         method: "GET",
         // headers: {
@@ -26,7 +43,6 @@ function GitHubUser({ login }){
   [login])
 
   if(data){
-    console.log('data is sending');
     return <pre>{JSON.stringify(data, null, 2)}</pre>;
   }
   return null; 
@@ -34,6 +50,6 @@ function GitHubUser({ login }){
 
 export default function App(){
   return(
-    <GitHubUser login="krk224" />
+    <GitHubUser login="moonhighway" />
   );
 };
