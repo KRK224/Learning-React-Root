@@ -1,55 +1,61 @@
 import React, { useState, useEffect} from 'react';
 
-const loadJSON = key =>
-  key && JSON.parse(localStorage.getItem(key));
+// const loadJSON = key =>
+//   key && JSON.parse(localStorage.getItem(key));
 
-const saveJSON = (key, data) =>
-  localStorage.setItem(key, JSON.stringify(data));
+// const saveJSON = (key, data) =>
+//   localStorage.setItem(key, JSON.stringify(data));
 
 function GitHubUser({ login }){
-  const [data, setData] = useState(loadJSON(`user:${login}`));
-  // const token = process.env.REACT_APP_GITHUB_TOKEN;
-  
+  const [data, setData] = useState();
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
+
   useEffect(()=>{
-    if (!data) return;
-    if (data.login === login) return;
-    const {name, avatar_url, location} = data;
-    saveJSON(`user:${login}`, {
-      name,
-      login,
-      avatar_url,
-      location
-    })
+    
   }, [data]);
 
   useEffect(()=>{
     if(!login) return;
-    if(data && data.login === login) return;
-    console.log('data is not it local storage');
-      fetch(`https://api.github.com/users/${login}`, {
+    setLoading(true);
+        fetch(`https://api.github.com/users/${login}`, {
         method: "GET",
         // headers: {
         //   Authorization: `Bearer ${token}`
         // }
       })
         .then(response => {
-          console.log('response is arrived');
           return response.json();
         })
         .then(setData)
-        .catch(console.error)
+        .then(()=> setLoading(false))
+        .catch(setError)
   }, 
   //[login, token]
   [login])
 
-  if(data){
-    return <pre>{JSON.stringify(data, null, 2)}</pre>;
-  }
-  return null; 
+  if (loading) return <h1>loading...</h1>
+  if (error) return <pre>{JSON.stringify(error, null, 2)}</pre>
+  if(!data) return null;
+
+  return (
+    <div className="githubUser">
+      <img
+        src={data.avatar_url} 
+        alt={data.login}
+        style={{ width: 200}}
+      />
+      <div>
+        <h1>{data.login}</h1>
+        {data.name && <p>{data.name}</p>}
+        {data.location && <p>{data.location}</p>}
+      </div>
+    </div>
+  )
 }
 
 export default function App(){
   return(
-    <GitHubUser login="moonhighway" />
+    <GitHubUser login="heedoitdox" />
   );
 };
