@@ -3,6 +3,7 @@ import Fetch from "./Fetch";
 import UserRepositories from "./UserRepositories";
 
 function UserDetails({data}) {
+  // console.log(data);
   return (
     <div className="githubUser">
       <img 
@@ -17,7 +18,7 @@ function UserDetails({data}) {
       </div>
       <UserRepositories 
         login={data.login}
-        onSelect={repoName => console.log(`${repoName} selected`)}
+        // onSelect={repoName => console.log(`${repoName} selected`)}
       />
     </div>
   );
