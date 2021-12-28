@@ -22,9 +22,9 @@ export default function RepositoryReadme({repo, login}) {
   }, []);
 
   useEffect(()=>{
-    console.log(`${repo} & ${login}`);
+    // console.log(`${repo} & ${login}`);
     if(!repo || !login) return;
-    console.log('markdown readme loading...')
+    // console.log('markdown readme loading...')
     loadReadme(login, repo).catch(setError);
   }, [repo]);
 
