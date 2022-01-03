@@ -4,14 +4,13 @@ import React, {
   useCallback
 } from 'react';
 import ReactMarkdown from 'react-markdown';
-import useMountedRef from '../hooks/useMountedRef';
 
 export default function RepositoryReadme({repo, login}) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
   const [markdown, setMarkdown] = useState("");
 
-  const mounted = useMountedRef();
+  // const mounted = useMountedRef();
 
   const loadReadme = useCallback(async (login, repo) =>{
     setLoading(true);
@@ -20,10 +19,9 @@ export default function RepositoryReadme({repo, login}) {
     
     const markdown = await fetch(download_url).then(res => res.text());
     
-    if(mounted.current){
+    // if(mounted.current){
       setMarkdown(markdown);
       setLoading(false);
-    }    
   }, []);
 
   useEffect(()=>{
