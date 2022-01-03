@@ -4,8 +4,8 @@ import { RepoMenu } from './RepoMenu';
 
 export default function UserRepositories({
   login,
-  selectedRepo,
-  // onSelect = f => f
+  repo,
+  onSelect = f => f
 }) {
   return(
     <Fetch
@@ -13,9 +13,8 @@ export default function UserRepositories({
       renderSuccess={({data}) =>(
         <RepoMenu 
           repositories={data}
-          selectedRepo={selectedRepo}
-          login={login}
-          // onSelect={onSelect}
+          selected={repo}
+          onSelect={onSelect}
         />
       )}
     / >

@@ -5,6 +5,7 @@ export const useIterator = (
   initialIndex = 0
 ) => {
   const [i, setIndex] = useState(initialIndex);
+  console.log(`현재 i값은: ${i}`);
 
   const prev = useCallback(() => {
     if (i===0) return setIndex (items.length -1);
