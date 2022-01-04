@@ -8,11 +8,7 @@ export function RepoMenu({
   selected,
   onSelect = f => f
 }) {
-  
 
-  console.log('repositories in RepoMenu: ', repositories);
-  console.log('selected in RepoMenu:', selected);
-  console.log(repositories.findIndex(repo => repo.name === selected))
   const [{name}, previous, next] = useIterator(
     repositories,
     selected? repositories.findIndex(repo => repo.name === selected): null
@@ -20,8 +16,8 @@ export function RepoMenu({
   
 
   useEffect(()=>{
-    console.log('selected in RepoMenu is changed');
-    console.log('name in RepoMenu', name);
+    // console.log('selected in RepoMenu is changed');
+    // console.log('name in RepoMenu', name);
     onSelect(name);
   }, [name])
     

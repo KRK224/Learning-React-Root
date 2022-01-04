@@ -13,8 +13,5 @@ export default function Fetch({
 
   if (loading) return loadingFallback;
   if (error) return renderError(error);
-  if (data) {
-    console.log('Data in Fetch', data);
-    return renderSuccess({data});
-  }
+  if (data) return renderSuccess({data});
 }

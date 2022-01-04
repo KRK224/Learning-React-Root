@@ -1,6 +1,6 @@
 import React from "react";
 import Fetch from "./Fetch";
-import UserRepositories from "./UserRepositories";
+// import UserRepositories from "./UserRepositories";
 
 function UserDetails({data}) {
   // console.log(data);

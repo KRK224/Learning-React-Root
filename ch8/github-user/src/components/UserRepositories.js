@@ -10,10 +10,10 @@ export default function UserRepositories({
 
 
 
-  useEffect(()=>{
-    console.log('repo is changed in UserRepositories', repo);
+  // useEffect(()=>{
+  //   // console.log('repo is changed in UserRepositories', repo);
 
-  }, [repo])
+  // }, [repo])
 
   
   return(
