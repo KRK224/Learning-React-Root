@@ -16,12 +16,9 @@ export default function RepositoryReadme({repo, login}) {
     setLoading(true);
     const uri = `https://api.github.com/repos/${login}/${repo}/readme`;
     const {download_url} = await fetch(uri).then(res => res.json());
-    
     const markdown = await fetch(download_url).then(res => res.text());
-    
-    // if(mounted.current){
-      setMarkdown(markdown);
-      setLoading(false);
+    setMarkdown(markdown);
+    setLoading(false);
   }, []);
 
   useEffect(()=>{

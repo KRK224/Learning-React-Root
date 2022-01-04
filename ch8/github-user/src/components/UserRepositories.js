@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Fetch from './Fetch';
 import { RepoMenu } from './RepoMenu';
 
@@ -7,6 +7,15 @@ export default function UserRepositories({
   repo,
   onSelect = f => f
 }) {
+
+
+
+  useEffect(()=>{
+    console.log('repo is changed in UserRepositories', repo);
+
+  }, [repo])
+
+  
   return(
     <Fetch
       uri={`https://api.github.com/users/${login}/repos`}
