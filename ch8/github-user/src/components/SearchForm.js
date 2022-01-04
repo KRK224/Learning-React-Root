@@ -14,7 +14,6 @@ const SearchForm = ({value, onSearch= f=>f}) =>{
     <form onSubmit={submit}>
       <input type="text"
         placeholder="type User ID..."
-        required
         value={input}
         onChange={e=>setInput(e.target.value)}
       />

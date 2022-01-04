@@ -19,7 +19,7 @@ export function RepoMenu({
     // console.log('selected in RepoMenu is changed');
     // console.log('name in RepoMenu', name);
     onSelect(name);
-  }, [name])
+  }, [name, repositories])
     
 
     return(
