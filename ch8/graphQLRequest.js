@@ -1,5 +1,6 @@
 import { GraphQLClient } from "graphql-request";
 
+const token = '개인 발급 키'
 const query = `
   query findRepos($login: String!){ 
     user(login: $login){
@@ -22,7 +23,7 @@ const client = new GraphQLClient(
   "https://api.github.com/graphql",
   {
     headers: {
-      Authorization: `Bearer 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`
+      Authorization: `Bearer ${token}`
     }
   }
 );
