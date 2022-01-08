@@ -9,6 +9,7 @@ const App = () =>{
   const BreakThings =() =>{
     throw new Error('We intentionally broke something');
   }
+  
   return(
     <SiteLayout menu={
       <ErrorBoundary fallback={(error)=><ErrorScreen error={error}/>}>
