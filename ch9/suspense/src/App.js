@@ -10,15 +10,23 @@ const App = () =>{
     throw new Error('We intentionally broke something');
   }
   return(
-    <ErrorBoundary fallback={ErrorScreen}>
-      <SiteLayout menu={<p>Menu</p>} >
-        <div>
-          <Callout>Callout</Callout>
-          <h1>Contents</h1>
-          <p>This is the main part of the example layout</p>
-        </div>
-      </SiteLayout>
-    </ErrorBoundary>
+    <SiteLayout menu={
+      <ErrorBoundary fallback={(error)=><ErrorScreen error={error}/>}>
+        <p>Site Layout Menu</p>
+        <BreakThings />
+      </ErrorBoundary>
+      }>
+      <>
+      <ErrorBoundary fallback={(error)=><ErrorScreen error={error}/>}>
+        <Callout>Callout</Callout>
+        <BreakThings />
+      </ErrorBoundary>
+      <ErrorBoundary fallback={(error)=><ErrorScreen error={error}/>}>
+        <h1>Contents</h1>
+        <p>This is the main part of the example layout</p>
+      </ErrorBoundary>
+      </>
+    </SiteLayout>
   )
 }
 
